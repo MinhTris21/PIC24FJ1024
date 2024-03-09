@@ -1,0 +1,35 @@
+//Xoay dong chu LTK is kute tu trai qua phai
+#pragma config FNOSC = PRI
+#pragma config POSCMOD = HS
+#pragma config JTAGEN = OFF
+#pragma config WINDIS = OFF
+#pragma config FWDTEN = OFF
+ 
+#include "string.h"
+#define FCY 8000000UL
+#include "xc.h"
+#include "libpic30.h"
+#include "lcd.h"
+ 
+int main(void){
+LCD_Initialize();
+LCD_ClearScreen();
+char chuoi[12] = "LTK is kute\0";
+int i,j;
+while (1) {
+    for (i= 0; i<= 16; i++) {
+        LCD_ClearScreen();
+        for (j= 1; j<= i; j++)
+            printf(" ");
+        if (16-i < 11) {
+            for (j= 0; j<= 16-i-1; j++)
+                printf("%c", chuoi[j]);
+        }
+        else {
+            printf("%s", chuoi);
+        }
+        __delay_ms(500);
+    }
+}
+return 0;
+}

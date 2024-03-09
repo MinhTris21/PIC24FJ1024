@@ -1,0 +1,37 @@
+#pragma config FNOSC = PRI
+#pragma config POSCMOD = HS
+#pragma config JTAGEN = OFF
+#pragma config WINDIS = OFF
+#pragma config FWDTEN = OFF
+
+#include "string.h"
+#define FCY 8000000UL
+#include "xc.h"
+#include "libpic30.h"
+#include "lcd.h"
+
+
+int main(void){
+    LCD_Initialize();
+    LCD_ClearScreen();
+    int i,j;
+    while(1){
+        char chuoi[16] = "LTK is kute     ";
+        for(i = 0; i < 11; i++){
+            for(j = i; j >= 0; j--){
+                printf("%c",chuoi[10 - j]);
+            }
+            __delay_ms(500);
+            LCD_ClearScreen();
+        }
+        for (i = 0; i < 16; i++){
+            for(j = 15; j >= 1; j--){
+                chuoi[j]=chuoi[j-1];
+            }
+            chuoi[0]=' ';
+            printf("%s",chuoi);
+            __delay_ms(500);
+            LCD_ClearScreen();
+        }
+    }
+}
