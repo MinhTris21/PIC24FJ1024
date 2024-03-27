@@ -15,16 +15,16 @@ int main(void){
     LCD_Initialize();
     LCD_ClearScreen();
     int i = 0,j = 0;
-    char LTK[19] = "LTK IS cutehhh     ";    
+    char LTK[19] = "Xin chao, tam biet nhe";    
     while(1){
        LCD_ClearScreen();
         char temp;
         temp = LTK[0];
-        for ( j = 0; j < 19; j++){
+        for ( j = 0; j < 22; j++){
             LTK[j] = LTK[j+1];
         }
         LTK[18] = temp;
-        for(i = 0; i < 16; i++){
+        for(i = 0; i < 19; i++){
             printf("%c", LTK[i]);
         }
  __delay_ms(200);
